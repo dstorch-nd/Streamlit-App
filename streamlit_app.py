@@ -10,7 +10,7 @@ from textblob import TextBlob
 # to input their own song lyrics 
 # and select the sentiment method
 
-st.title('Sentiment Analysis App')
+st.title('Sentiment Analysis App - testing')
 
 st.write('This app will allow you to input song lyrics and determine the sentiment of the lyrics.')
 
