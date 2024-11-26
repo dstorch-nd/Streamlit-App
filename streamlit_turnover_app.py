@@ -1,16 +1,17 @@
 import streamlit as st
 import joblib
+import pandas as pd
 
 model = joblib.load('lasso_model.joblib')
 
-st.title('Employee Turnover Prediction - this is one more test for pushing.')
+st.title('Employee Turnover Prediction')
 st.write('Use the following form to submit data for a prediction.')
 
 # Create form for user input
 form = st.form(key='my_form')
 
-
-numberPriorJobs = form.number_input('Age of Employee', min_value=22, max_value=75, value=0)
+age = form.number_input('Age of Employee', min_value=22, max_value=75, value=22)
+numberPriorJobs = form.number_input('Number of Prior Jobs', min_value=0, max_value=15, value=0)
 proportion401K = form.number_input('Proportion of 401K', min_value=0.0, max_value=1.0, value=0.0)
 startingSalary = form.number_input('Starting Salary', min_value=0, max_value=200000, value=0)
 currentSalary = form.number_input('Current Salary', min_value=0, max_value=200000, value=0)
@@ -25,6 +26,7 @@ submit_button = form.form_submit_button(label='Submit')
 
 if submit_button:
     data = {
+        'age': age,
         'numberPriorJobs': numberPriorJobs,
         'proportion401K': proportion401K,
         'startingSalary': startingSalary,
